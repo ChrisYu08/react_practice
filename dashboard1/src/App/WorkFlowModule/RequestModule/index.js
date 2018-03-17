@@ -8,6 +8,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+// import Request from '../../IndexModule/Content/Table/Request/index';
 class Request extends Component {
     constructor(props) {
         super(props);
@@ -48,21 +49,77 @@ class Request extends Component {
 			let time1=new Date();
 			data_apply.time=(time1+'').slice(0,25);
 			data_apply.checked=true;
+			// setTimeout(() => {
+				// alert('申请成功')
+			// }, 1000);
+
+			this.refs.outBox.style.display='block';
 			setTimeout(() => {
-				alert('申请成功')
-			}, 1000);
+				this.refs.outBox.classList.add('in');
+				this.refs.shadow.style.display='block'; 
+			}, 100);
+
 			addData(data_apply)
 		}
 		
 	}
-	cancel=()=>{
-
+	cancel=(ev)=>{
+		if(this.refs.id.value){
+			this.refs.id.parentNode.classList.remove('has-error')
+		}
+		if(this.refs.name.value){
+			this.refs.name.parentNode.classList.remove('has-error')
+		}
+		if(this.refs.name1.value){
+			this.refs.name1.parentNode.classList.remove('has-error')
+		}
+		if(this.refs.job.value){
+			this.refs.job.parentNode.classList.remove('has-error')
+		}
+		this.refs.id.value='';
+		this.refs.name.value='';
+		this.refs.name1.value='';
+		this.refs.job.value='';
+		this.refs.txt.value='';
 	}
+
+    cancel_out=()=>{
+        this.refs.outBox.style.display='none';
+        this.refs.outBox.classList.remove('in');
+        this.refs.shadow.style.display='none'; 
+    }
     render() { 
         return ( 
             <div id="content">
+
+			{/* 弹出框 */}
+			<div ref="shadow" style={{width:'100%',height:'100%',position:'absolute', top:'0',left:'0',background:'black',opacity:'.8',display:'none',zIndex:'1030'}}></div>
+				<div ref="outBox" className="modal fade mail-new-message" id="new-mail" role="modal">
+                    <div style={{opacity:'1'}} className="modal-dialog">
+					    <div className="modal-content">
+					    	<div className="modal-header">
+					        	<button onClick={this.cancel_out} type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        	<h4 className="modal-title">New Application</h4>
+					    	</div>
+					    	<div className="modal-body nopadding">
+									<div className="new-message-to" style={{fontSize:'20px',color:'#555555',textAlign:'center',padding:'20px 0'}}>
+										 WorkFlow申请单
+									</div>
+									<div className="new-message-subject" style={{fontSize:'25px',color:'black',textAlign:'center',padding:'20px 0'}}>
+										申请状态： 成功
+									</div>
+					    	</div>
+					    	<div className="modal-footer">
+					        	<button onClick={this.cancel_out} type="button" className="btn btn-primary" data-dismiss="modal">Confirm</button>
+					      	</div>
+					    </div>
+					</div>
+				</div>
+
+
+
 			<div id="content-header">
-				<h1>Common Form Elements</h1>
+				<h1>申请/request Form</h1>
 				<div className="btn-group">
 					<a className="btn btn-large" title="Manage Files"><i className="fa fa-file"></i></a>
 					<a className="btn btn-large" title="Manage Users"><i className="fa fa-user"></i></a>
@@ -72,8 +129,8 @@ class Request extends Component {
 			</div>
 			<div id="breadcrumb">
 				<a href="index.html" title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
-				<a href="#">Form elements</a>
-				<a href="#" className="current">Common elements</a>
+				<a style={{cursor:"pointer"}} >WorkFlow</a>
+				<a style={{cursor:"pointer"}} className="current">Request</a>
 			</div>
 			<div className="container-fluid">
 				<div className="row">
@@ -141,154 +198,13 @@ class Request extends Component {
 											<input  ref="name" type="text" className="form-control input-sm" placeholder="IO号申请单..."  />
 										</div>
 									</div>
-									{/* <div className="form-group">
-										<div className="col-sm-3 col-md-3 col-lg-2 control-label">Disabled input</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<input type="text" className="form-control input-sm" placeholder="This input is disabled..."  />
-										</div>
-									</div>
-									<div className="form-group">
-										<div className="col-sm-3 col-md-3 col-lg-2 control-label">Input with description</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<div className="row">
-												<div className="col-md-4">
-													<input type="text" className="form-control input-sm" />
-													<span className="help-block text-left">This is a description</span>
-												</div>
-												<div className="col-md-4">
-													<input type="text" className="form-control input-sm" />
-													<span className="help-block text-center">This is a description in center</span>
-												</div>
-												<div className="col-md-4">
-													<input type="text" className="form-control input-sm" />
-													<span className="help-block text-right">This is a description on right</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="form-group">
-										<div  className="col-sm-3 col-md-3 col-lg-2 control-label">Input with tooltip</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<input type='text' title="Tooltip on input field" className="tip-bottom form-control input-sm" />
-										</div>
-									</div>
-									<div className="form-group">
-										<div  className="col-sm-3 col-md-3 col-lg-2 control-label">Input with max chars</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<input type='text' maxLength="15" placeholder="Maximum 15 characters here..." className="form-control input-sm" />
-										</div>
-									</div>
-									<div className="form-group">
-										<div  className="col-sm-3 col-md-3 col-lg-2 control-label">Input with icon</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<div className="row">
-												<div className="col-md-6">
-													<div className="input-icon icon-sm">
-														<i className="fa fa-tint"></i>
-														<input type='text' className="form-control input-sm" />
-													</div>
-												</div>
-												<div className="col-md-6">
-													<div className="input-icon on-right icon-sm">
-														<input type='text' className="form-control input-sm" />
-														<i className="fa fa-laptop"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="form-group">
-										<div  className="col-sm-3 col-md-3 col-lg-2 control-label">Input helps</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<div className="row">
-												<div className="col-md-6">
-													<div className="input-group input-group-sm">
-														<span className="input-group-addon"><i className="fa fa-globe"></i></span>
-														<input type='text' placeholder="On left..." className="form-control" />
-													</div>
-												</div>
-												<div className="col-md-6">
-													<div className="input-group input-group-sm">
-														<input placeholder="There is the right one..." type='text' className="form-control" />
-														<span className="input-group-addon"><i className="fa fa-fire"></i></span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="form-group">
-										<div  className="col-sm-3 col-md-3 col-lg-2 control-label">Input helps too</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<div className="input-group input-group-sm">
-												<span className="input-group-addon"><i className="fa fa-quote-left"></i></span>
-												<input type='text' className="form-control input-sm" />
-												<span className="input-group-addon"><i className="fa fa-quote-right"></i></span>
-											</div>
-										</div>											
-									</div>
-									<div className="form-group">
-										<div  className="col-sm-3 col-md-3 col-lg-2 control-label">Input with button</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<div className="row">
-												<div className="col-md-6">
-													<div className="input-group input-group-sm">
-														<span className="input-group-btn">
-															<a href="#" className="btn btn-warning">Go!</a>
-														</span>
-														<input type='text' className="form-control" />
-													</div>
-												</div>
-												<div className="col-md-6">
-													<div className="input-group input-group-sm">
-														<input type='text' className="form-control" />
-														<span className="input-group-btn">
-															<a href="#" className="btn btn-inverse">Go!</a>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="form-group">
-										<div className="col-sm-3 col-md-3 col-lg-2 control-label">Input grid</div>
-										<div className="col-sm-9 col-md-9 col-lg-10">
-											<div className="row">
-												<div className="col-md-12">
-													<input type="text" className="form-control" value="" />
-												</div>
-											</div>
-											<div className="row">
-												<div className="col-md-6"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-6"><input type="text" className="form-control" value="" /></div>
-											</div>
-											<div className="row">
-												<div className="col-md-4"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-4"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-4"><input type="text" className="form-control" value="" /></div>
-											</div>
-											<div className="row">
-												<div className="col-md-3"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-9"><input type="text" className="form-control" value="" /></div>
-											</div>
-											<div className="row">
-												<div className="col-md-4"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-3"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-5"><input type="text" className="form-control" value="" /></div>
-											</div>
-											<div className="row">
-												<div className="col-md-3"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-3"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-3"><input type="text" className="form-control" value="" /></div>
-												<div className="col-md-3"><input type="text" className="form-control" value="" /></div>
-											</div>
-										</div>
-									</div> */}
+									
 
 
 									<div className="form-group">
 										<div className="col-sm-3 col-md-3 col-lg-2 control-label">备注/Mark:</div>
 										<div className="col-sm-9 col-md-9 col-lg-10">
-											<textarea rows="5" className="form-control"></textarea>
+											<textarea ref="txt" rows="5" className="form-control"></textarea>
 										</div>
 									</div>
 									<div className="form-actions">

@@ -5,11 +5,11 @@ import LoginModule from './App/LoginModule/index';
 // import IndexModule from './App/IndexModule/index';
 import App from './App/index';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Link,
     Route,
     Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
 ReactDOM.render(
     <Router>
         <Switch>

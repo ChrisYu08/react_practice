@@ -7,7 +7,7 @@ class Header extends Component {
     render() { 
         return (
             <div id="header">
-				<h1><a href="./index.html">Unicorn Admin</a></h1>	
+				<h1><a>This is My Region</a></h1>	
 				<a id="menu-trigger" href="#"><i className="fa fa-bars"></i></a>	
 			</div>
         )

@@ -17,7 +17,7 @@ class Switcher extends Component {
 	                    <a data-color="green" title="Green" className="button-square green-switcher" href="#"></a>
 	                    <a data-color="red" title="Red" className="button-square red-switcher" href="#"></a>
 	                    <a data-color="purple" title="Purple" className="button-square purple-switcher" href="#"></a>
-	                    <a href="#" data-color="grey" title="Grey" className="button-square grey-switcher"></a>
+	                    <a style={{cursor:"pointer"}} data-color="grey" title="Grey" className="button-square grey-switcher"></a>
 	                </p>
 	                <h4 className="visible-lg">Layout Type</h4>
 	                <p id="layout-type">

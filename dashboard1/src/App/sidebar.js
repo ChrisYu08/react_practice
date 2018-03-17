@@ -81,7 +81,7 @@ class Sidebar extends Component {
 				<ul>
 					<li ref="wf_menu1" className="active"><Link onClick={this.click1} to="/homepage"><i className="fa fa-home"></i> <span>Dashboard</span></Link></li>
                     <li ref="wf_menu" className="submenu">
-						<a onClick={this.click} style={{cursor:"pointer"}}><i className="fa fa-flask"></i> <span>WorkFlow</span> <i className="arrow fa fa-chevron-right"></i></a>
+						<a onClick={this.click} style={{cursor:"pointer"}}><i className="fa fa-list"></i> <span>WorkFlow</span> <i className="arrow fa fa-chevron-right"></i></a>
 						<ul ref="wf">
 							
 							<li onClick={this.click_inq}><Link to="/homepage/workflow/check">查询/Inquiry</Link></li>
@@ -93,7 +93,7 @@ class Sidebar extends Component {
 						</ul>
 					</li>
 					<li className="submenu">
-						<a href="#"><i className="fa fa-th-list"></i> <span>Form elements</span> <i className="arrow fa fa-chevron-right"></i></a>
+						<a style={{cursor:"pointer"}} ><i className="fa fa-th-list"></i> <span>Access PDMLink</span> <i className="arrow fa fa-chevron-right"></i></a>
 						<ul>
 							<li><a href="form-common.html">Common elements</a></li>
 							<li><a href="form-validation.html">Validation</a></li>
@@ -101,11 +101,14 @@ class Sidebar extends Component {
 						</ul>
 					</li>
 					{/* <li><a href="tables.html"><i className="fa fa-th"></i> <span>Tables</span></a></li> */}
-					<li><a><i className="fa fa-th"></i> <span>WorkFlow</span></a></li>
-					{/* <Route path="/index/workflow" component="Home" /> */}
-					<li><a href="grid.html"><i className="fa fa-th-list"></i> <span>Grid Layout</span></a></li>
+
+
+                    <li><Link to="/homepage/invoice"><i className="fa fa-file"></i> <span>Invoice</span></Link></li>
+
+
+					<li><Link to="/homepage/msg"><i className="fa fa-th-list"></i> <span>Team Message</span></Link></li>
 					<li className="submenu">
-						<a href="#"><i className="fa fa-file"></i> <span>Sample pages</span> <i className="arrow fa fa-chevron-right"></i></a>
+						<a style={{cursor:"pointer"}} ><i className="fa fa-file"></i> <span>Resources</span> <i className="arrow fa fa-chevron-right"></i></a>
 						<ul>
 							<li><a href="invoice.html">Invoice</a></li>
 							<li><a href="chat.html">Support chat</a></li>
@@ -115,10 +118,10 @@ class Sidebar extends Component {
 						</ul>
 					</li>
 					<li>
-						<a href="charts.html"><i className="fa fa-signal"></i> <span>Charts &amp; graphs</span></a>
+						<a style={{cursor:"pointer"}} ><i className="fa fa-signal"></i> <span>Community</span></a>
 					</li>
 					<li>
-						<a href="widgets.html"><i className="fa fa-inbox"></i> <span>Widgets</span></a>
+						<a style={{cursor:"pointer"}} ><i className="fa fa-inbox"></i> <span>Favorite</span></a>
 					</li>
 				</ul>
 			

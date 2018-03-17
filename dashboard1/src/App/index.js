@@ -13,7 +13,8 @@ import FooterRow from './footerRow';
 import HomePage from './HomePageModule/index';
 import Check from './WorkFlowModule/CheckModule/index';
 import Request from './WorkFlowModule/RequestModule/index';
-
+import Invoice from './Invoice/index';
+import TeamMessage from './TeamMessage/index';
 import {
     BrowserRouter as Router,
     Link,
@@ -62,6 +63,18 @@ class App extends Component {
                     checked:true
                 },
                 {   ID:'TE25190',
+                    Dept:'EHS',
+                    FormName:'PPE发放申请单',
+                    time:'Tue Mar 06 2012 11:08:51',
+                    checked:true
+                },
+                {   ID:'TE25191',
+                    Dept:'EHS',
+                    FormName:'PPE发放申请单',
+                    time:'Tue Mar 06 2012 11:08:51',
+                    checked:true
+                },
+                {   ID:'TE25192',
                     Dept:'EHS',
                     FormName:'PPE发放申请单',
                     time:'Tue Mar 06 2012 11:08:51',
@@ -136,7 +149,16 @@ class App extends Component {
                                 }
                             }
                         />
+                        <Route 
+                            path="/homepage/invoice"
+                            component={Invoice}
+                        />
+                        <Route 
+                            path="/homepage/msg"
+                            component={TeamMessage}
+                        />
                         <Route exact path="/homepage" component={HomePage}/>
+                        
                     </Switch>
                     <FooterRow />
                 </div>

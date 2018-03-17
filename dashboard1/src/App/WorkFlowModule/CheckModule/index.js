@@ -183,7 +183,7 @@ class Check extends Component {
         return ( 
             <div id="content">
 			<div id="content-header">
-				<h1>Tables</h1>
+				<h1>查询/Inquiry</h1>
 				<div className="btn-group">
 					<a className="btn btn-large" title="Manage Files"><i className="fa fa-file"></i></a>
 					<a className="btn btn-large" title="Manage Users"><i className="fa fa-user"></i></a>
@@ -192,8 +192,9 @@ class Check extends Component {
 				</div>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
-				<a href="#" className="current">Tables</a>
+				<a style={{cursor:"pointer"}} title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
+				
+				<a style={{cursor:"pointer"}} className="current">Inquiry</a>
 			</div>
 				<div className="row">
 					<div className="col-xs-12">
