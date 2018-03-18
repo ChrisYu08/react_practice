@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import "./index.css";
 import Calender from './Calender/index';
-// import Chart from './Chart/index';
+import Chart from './Chart/index';
+import Chart1 from './Chart/Chart1/Chart1';
+import News from './News/index';
 class HomePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+			char:true,
+			news:false,
+			cal:false
+		 }
 	}
 	click=(a)=>{
 		let chi=this.refs.ul1.children;
@@ -13,8 +19,28 @@ class HomePage extends Component {
 			chi[i].className=''
 		};
 		chi[a].className='active1';
+		if(a==0){
+			this.setState({
+				char:true,
+				news:false,
+				cal:false
+			})
+		}else if(a==1){
+			this.setState({
+				char:false,
+				news:true,
+				cal:false
+			})
+		}else if(a==2){
+			this.setState({
+				char:false,
+				news:false,
+				cal:true
+			})
+		}
 	}
     render() {
+		let {checkState}=this.props;
         return ( 
             <div id="content">
 				<div id="content-header" className="mini">
@@ -53,17 +79,23 @@ class HomePage extends Component {
 							<ul ref="ul1" className="quick-actions">
 								<li onClick={this.click.bind('',0)} className="active1">
 									<a style={{cursor:"pointer"}} >
+										<i className="icon-survey"></i>
+										Data Chart
+									</a>
+								</li>
+								<li onClick={this.click.bind('',1)}>
+									<a style={{cursor:"pointer"}} >
 										<i className="icon-piechart"></i>
 										TE China News
 									</a>
 								</li>
-								<li onClick={this.click.bind('',1)}>
+								<li onClick={this.click.bind('',2)}>
 									<a style={{cursor:"pointer"}} >
 										<i className="icon-cal"></i>
 										Calendar
 									</a>
 								</li>
-								<li onClick={this.click.bind('',2)}>
+								<li onClick={this.click.bind('',3)}>
 									<a style={{cursor:"pointer"}} >
 										<i className="icon-shopping-bag"></i>
 										FSS HelpDesk
@@ -75,18 +107,13 @@ class HomePage extends Component {
 										Manage DB
 									</a>
 								</li> */}
-								<li onClick={this.click.bind('',3)}>
+								<li onClick={this.click.bind('',4)}>
 									<a style={{cursor:"pointer"}} >
 										<i className="icon-people"></i>
 										IT HelpDesk
 									</a>
 								</li>
-								<li onClick={this.click.bind('',4)}>
-									<a style={{cursor:"pointer"}} >
-										<i className="icon-lock"></i>
-										Security
-									</a>
-								</li>
+								
 								<li onClick={this.click.bind('',5)}>
 									<a style={{cursor:"pointer"}} >
 										<i className="icon-search"></i>
@@ -99,7 +126,7 @@ class HomePage extends Component {
 					<br />
 					<div className="row">
 						<div className="col-xs-12">
-							<div style={{marginBottom:"5px"}} className="alert alert-info">
+							{/* <div style={{marginBottom:"5px"}} className="alert alert-info">
 								[2017-08-25] <strong>TEIS变革进展</strong>
 							</div>
 							<div style={{marginBottom:"5px"}} className="alert alert-info">
@@ -113,14 +140,14 @@ class HomePage extends Component {
 							</div>
 							<div style={{marginBottom:"5px"}} className="alert alert-info">
 							[2016-08-04] <strong>如何在TE中国改善网络系统的连接性能</strong>
-							</div>
+							</div> */}
+							{this.state.news ? <News ref="news"/> : null}
 
-
-							<Calender />
+							{this.state.cal? <Calender ref="cal" /> : null}
 							
-							{/* <Chart /> */}
+							{this.state.char ? <Chart checkState={checkState} ref="char"/> : null}
 
-							<div className="widget-box">
+							<div style={{marginTop:'60px'}} className="widget-box">
 								<div className="widget-title">
 									<span className="icon"><i className="fa fa-signal"></i></span>
 									<h5>Site Statistics</h5>
@@ -132,16 +159,18 @@ class HomePage extends Component {
 									<div className="row">
 										<div className="col-xs-12 col-sm-4">
 											<ul className="site-stats">
-												<li><div className="cc"><i className="fa fa-user"></i> <strong>1433</strong> <span style={{color:"#888888",marginLeft:"20px"}}>季度生产目标</span></div></li>
-												<li><div className="cc"><i className="fa fa-arrow-right"></i> <strong>16</strong> <span style={{color:"#888888",marginLeft:"20px"}}>季度已生产量</span></div></li>
+												<li><div className="cc"><i className="fa fa-tag"></i> <strong>{checkState.length*1+615}</strong> <span style={{color:"#888888",marginLeft:"20px"}}>报告统计</span></div></li>
+												<li><div className="cc"><i className="fa fa-tag"></i> <strong>516</strong> <span style={{color:"#888888",marginLeft:"20px"}}>已处理报告</span></div></li>
 												<li className="divider"></li>
-												<li><div className="cc"><i className="fa fa-shopping-cart"></i> <strong>259</strong> <span style={{color:"#888888",marginLeft:"20px"}}>持续安全生产时间</span></div></li>
-												<li><div className="cc"><i className="fa fa-tag"></i> <strong>8650</strong> <span style={{color:"#888888",marginLeft:"20px"}}>季度销售量</span></div></li>
-												<li><div className="cc"><i className="fa fa-repeat"></i> <strong>29</strong> <span style={{color:"#888888",marginLeft:"20px"}}>季度利润</span></div></li>
+												<li><div className="cc"><i className="fa fa-tag"></i> <strong>492</strong> <span style={{color:"#888888",marginLeft:"20px"}}>有效报告</span></div></li>
+												<li><div className="cc"><i className="fa fa-tag"></i> <strong>24</strong> <span style={{color:"#888888",marginLeft:"20px"}}>无效报告</span></div></li>
+												<li><div className="cc"><i className="fa fa-tag"></i> <strong>71.6%</strong> <span style={{color:"#888888",marginLeft:"20px"}}>工作效率</span></div></li>
 											</ul>
 										</div>
 										<div className="col-xs-12 col-sm-8">
-											<div className="chart"></div>
+											<div className="chart">
+											<Chart1 checkState={checkState} />
+											</div>
 										</div>	
 									</div>							
 								</div>

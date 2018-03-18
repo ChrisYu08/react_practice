@@ -157,7 +157,12 @@ class App extends Component {
                             path="/homepage/msg"
                             component={TeamMessage}
                         />
-                        <Route exact path="/homepage" component={HomePage}/>
+                        <Route exact path="/homepage" 
+                            render={()=>{
+                                return <HomePage 
+                                            checkState={this.state.arr}
+                                        />
+                        }} />
                         
                     </Switch>
                     <FooterRow />
