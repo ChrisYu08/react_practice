@@ -16,7 +16,15 @@ class TeamMessage extends Component {
         this.refs.outBox.style.display='none';
         this.refs.outBox.classList.remove('in');
         this.refs.shadow.style.display='none'; 
-    }
+	}
+	ClickCh=(a1)=>{
+		let chil=this.refs.ch.children;
+		for(let i=0;i<chil.length;i++){
+			chil[i].className='';
+		};
+		console.log(a1)
+		chil[a1].className='active';
+	}
     render() { 
         return ( 
             <div id="content">
@@ -35,7 +43,7 @@ class TeamMessage extends Component {
 					        	<h4 className="modal-title">New message</h4>
 					    	</div>
 					    	<div className="modal-body nopadding">
-					        	<form action="#">
+					        	<form>
 									<div className="new-message-to">
 										To: <input type="text" name="message-to" />
 									</div>
@@ -48,18 +56,18 @@ class TeamMessage extends Component {
 					        	</form>
 					    	</div>
 					    	<div className="modal-footer">
-					        	<button type="button" className="btn btn-danger" data-dismiss="modal">Discard</button>
-					        	<button type="button" className="btn btn-success" data-dismiss="modal">Save as draft</button> &nbsp; &nbsp; 
-					        	<button type="button" className="btn btn-primary" data-dismiss="modal">Send</button>
+					        	<button onClick={this.cancel} type="button" className="btn btn-danger" data-dismiss="modal">Discard</button>
+					        	<button onClick={this.cancel} type="button" className="btn btn-success" data-dismiss="modal">Save as draft</button> &nbsp; &nbsp; 
+					        	<button onClick={this.cancel} type="button" className="btn btn-primary" data-dismiss="modal">Send</button>
 					      	</div>
 					    </div>
 					</div>
 				</div>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
+				<a style={{cursor:'pointer'}} title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
 				{/* <a href="#">Sample Pages</a> */}
-				<a href="#" className="current">Messages</a>
+				<a style={{cursor:'pointer'}} className="current">Messages</a>
 			</div>				
 				<div className="row">
 					<div className="col-xs-12">
@@ -72,11 +80,11 @@ class TeamMessage extends Component {
 								<div className="buttons">
 									<a className="btn go-full-screen"><i className="fa fa-resize-full"></i></a>
 								</div>
-								<ul className="nav nav-tabs pull-right">
-									<li className="active"><a href="#inbox-tab" data-toggle="tab"><i className="fa fa-inbox"></i><span className="text"> Inbox</span></a></li>
-									<li><a href="#sent-tab" data-toggle="tab"><i className="fa fa-location-arrow"></i><span className="text"> Sent</span></a></li>
-									<li><a href="#messages" data-toggle="tab"><i className="fa fa-pencil"></i><span className="text"> Draft</span></a></li>
-									<li><a href="#settings" data-toggle="tab"><i className="fa fa-trash-o"></i><span className="text"> Trash</span></a></li>
+								<ul ref="ch" className="nav nav-tabs pull-right">
+									<li onClick={this.ClickCh.bind('',0)} className="active"><a style={{cursor:'pointer'}} data-toggle="tab"><i className="fa fa-inbox"></i><span className="text"> Inbox</span></a></li>
+									<li onClick={this.ClickCh.bind('',1)}><a style={{cursor:'pointer'}} data-toggle="tab"><i className="fa fa-location-arrow"></i><span className="text"> Sent</span></a></li>
+									<li onClick={this.ClickCh.bind('',2)}><a style={{cursor:'pointer'}} data-toggle="tab"><i className="fa fa-pencil"></i><span className="text"> Draft</span></a></li>
+									<li onClick={this.ClickCh.bind('',3)}><a style={{cursor:'pointer'}} data-toggle="tab"><i className="fa fa-trash-o"></i><span className="text"> Trash</span></a></li>
 								</ul>
 							</div>
 							<div className="widget-content nopadding">
@@ -207,7 +215,6 @@ class TeamMessage extends Component {
 											<div className="message-header">
 												<div className="message-from">John Doe &lt;john-doe@domain.com&gt;</div>
 												<div className="message-to">To: George Coockeny</div>
-												<div className="message-subject">Bootstrap 3.0 is finally here!</div>
 												<div className="message-time">8 Sep 2013, 08:46 PM</div>
 												<div className="message-actions">
 													<a href="#" title="Move to trash"><i className="fa fa-trash-o"></i></a>
@@ -223,12 +230,12 @@ class TeamMessage extends Component {
 												<p>
 													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut blandit ligula. In accumsan mauris at augue feugiat consequat. Aenean consequat sem sed velit sagittis dignissim. Phasellus quis convallis est. Praesent porttitor mauris nec lectus mollis, eget sodales libero venenatis. Cras eget vestibulum turpis. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam turpis velit, tempor vitae libero ac, fermentum laoreet dolor.
 												</p>
-												<p>
+												{/* <p>
 													Phasellus sodales metus at pulvinar facilisis. Aliquam et orci condimentum, ultrices erat in, ornare mi. Etiam vel nulla eu enim sagittis imperdiet. Donec justo arcu, iaculis eu ante ac, consequat vulputate nisl. Aenean sed consectetur tortor. Quisque tempus enim id velit ultricies, ac egestas leo vestibulum. Donec pulvinar viverra venenatis. Mauris eu dui enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus malesuada commodo odio, in hendrerit mi tincidunt nec.
 												</p>
 												<p>
 													Cras sed leo in neque iaculis iaculis vel vel sem. Praesent sed urna viverra odio molestie consectetur. className aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis quis consectetur arcu, quis tempus ipsum. Fusce eleifend arcu nunc, non porta ipsum imperdiet faucibus. Vivamus dictum, massa tincidunt blandit faucibus, tortor libero rhoncus nunc, id faucibus est leo non odio. className aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque at elit sed quam pretium bibendum vel eget sem. Fusce sed ante nec eros placerat vulputate sed eget nulla. Sed in dictum justo, ut ullamcorper est. Proin semper tellus orci, eu accumsan neque ultrices at. Fusce a vulputate risus. Maecenas id hendrerit metus, ornare sodales dolor. Pellentesque tempus, justo quis faucibus commodo, magna mauris tempus velit, vitae egestas leo orci in sapien. Maecenas egestas erat augue, sit amet convallis lacus tristique eu. Donec gravida dui dictum libero eleifend dapibus. 
-												</p>	
+												</p>	 */}
 												<p>
 													Regards,<br />
 													John Doe

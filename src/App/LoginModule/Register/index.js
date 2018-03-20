@@ -66,10 +66,10 @@ class Register extends Component {
                 </div>
                 <div className="form-actions clearfix">
                     <div onClick={this.back} className="pull-left">
-                        <a href="#loginform" className="grey flip-link to-login">Click to login</a>
+                        <a style={{cursor:'pointer'}} className="grey flip-link to-login">Click to login</a>
                     </div>
                     <div onClick={this.recover} className="pull-right">
-                        <a href="#recoverform" className="grey flip-link to-recover">Lost password?</a>
+                        <a style={{cursor:'pointer'}} className="grey flip-link to-recover">Lost password?</a>
                     </div>
                     <input onClick={this.click} type="button" className="btn btn-block btn-success" value="Register" />
                 </div>

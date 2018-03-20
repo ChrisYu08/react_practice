@@ -93,10 +93,10 @@ class Login extends Component {
                           </div>
                           <div className="form-actions clearfix">
                               <div className="pull-left" onClick={this.reg}>
-                                  <a href="#registerform" className="flip-link to-register blue">Create new account</a>
+                                  <a style={{cursor:'pointer'}} className="flip-link to-register blue">Create new account</a>
                               </div>
                               <div className="pull-right" onClick={this.rec}>
-                                  <a href="#recoverform" className="flip-link to-recover grey">Lost password?</a>
+                                  <a style={{cursor:'pointer'}} className="flip-link to-recover grey">Lost password?</a>
                               </div>
                               <p ref="change">
                               {link}
@@ -112,9 +112,9 @@ class Login extends Component {
                                   Login with
                               </div>
                               <div className="pull-right btn-social">
-                                  <a className="btn btn-facebook" href="#"><i className="fa fa-facebook"></i></a>
-                                  <a className="btn btn-twitter" href="#"><i className="fa fa-skype"></i></a>
-                                  <a className="btn btn-google-plus" href="#"><i className="fa fa-google-plus"></i></a>
+                                  <a className="btn btn-facebook" style={{cursor:'pointer'}}><i className="fa fa-facebook"></i></a>
+                                  <a className="btn btn-twitter" style={{cursor:'pointer'}}><i className="fa fa-skype"></i></a>
+                                  <a className="btn btn-google-plus" style={{cursor:'pointer'}}><i className="fa fa-google-plus"></i></a>
                               </div>
                           </div>
     

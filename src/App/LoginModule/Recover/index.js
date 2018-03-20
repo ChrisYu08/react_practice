@@ -22,10 +22,10 @@ class Recover extends Component {
                     </div>
                     <div className="form-actions clearfix">
                         <div onClick={this.back} className="pull-left">
-                            <a href="#loginform" className="grey flip-link to-login">Click to login</a>
+                            <a style={{cursor:'pointer'}} className="grey flip-link to-login">Click to login</a>
                         </div>
                         <div onClick={this.createN} className="pull-right">
-                            <a href="#registerform" className="blue flip-link to-register">Create new account</a>
+                            <a style={{cursor:'pointer'}} className="blue flip-link to-register">Create new account</a>
                         </div>
                         {/* <input type="submit" className="btn btn-block btn-inverse" value="Recover" /> */}
                         <input type="button" className="btn btn-block btn-inverse" value="Recover" />

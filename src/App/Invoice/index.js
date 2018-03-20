@@ -17,9 +17,9 @@ class Invoice extends Component {
 				</div>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
+				<a style={{cursor:'pointer'}} title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
 				{/* <a href="#">Sample Pages</a> */}
-				<a href="#" className="current">Invoice</a>
+				<a style={{cursor:'pointer'}} className="current">Invoice</a>
 			</div>				
 				<div className="row">
 					<div className="col-xs-12">
@@ -30,8 +30,8 @@ class Invoice extends Component {
 								</span>
 								<h5>Invoice</h5>
 								<div className="buttons">
-									<a title="Icon Title" className="btn" href="#"><i className="fa fa-shopping-cart"></i> <span className="text">Pay Now</span></a>
-									<a title="Icon Title" className="btn" href="#"><i className="fa fa-print"></i> <span className="text">Print</span></a>
+									<a title="Icon Title" className="btn" style={{cursor:'pointer'}}><i className="fa fa-shopping-cart"></i> <span className="text">Pay Now</span></a>
+									<a title="Icon Title" className="btn" style={{cursor:'pointer'}}><i className="fa fa-print"></i> <span className="text">Print</span></a>
 								</div>
 							</div>
 							<div className="widget-content">

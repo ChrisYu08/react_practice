@@ -15,6 +15,8 @@ import Check from './WorkFlowModule/CheckModule/index';
 import Request from './WorkFlowModule/RequestModule/index';
 import Invoice from './Invoice/index';
 import TeamMessage from './TeamMessage/index';
+
+
 import {
     BrowserRouter as Router,
     Link,
@@ -80,7 +82,8 @@ class App extends Component {
                     time:'Tue Mar 06 2012 11:08:51',
                     checked:true
                 }
-            ]
+            ],
+            num:1
             
          }
     }

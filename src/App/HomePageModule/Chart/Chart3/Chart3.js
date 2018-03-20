@@ -45,7 +45,7 @@ class Chart3 extends Component {
                 }
             },
             legend: {
-                data: ['各工位当日生产总量', '各工位剩余生产数量','各工位已生产数量'],
+                data: ['工位一实时生产总量', '实时无效产品数量','实时有效产品数量'],
                 textStyle: {
                     color: '#ffffff'
                 }
@@ -67,7 +67,7 @@ class Chart3 extends Component {
                 }
             },
             series: [{
-                name: '各工位当日生产总量',
+                name: '工位一实时生产总量',
                 type: 'line',
                 smooth: true,
                 showAllSymbol: true,
@@ -75,7 +75,7 @@ class Chart3 extends Component {
                 symbolSize: 16,
                 data: lineData
             }, {
-                name: '各工位已生产数量',
+                name: '实时有效产品数量',
                 type: 'bar',
                 barWidth: 10,
                 itemStyle: {
@@ -113,7 +113,7 @@ class Chart3 extends Component {
             //     data: lineData
             // }, 
             {
-                name: '各工位剩余生产数量',
+                name: '实时无效产品数量',
                 type: 'pictorialBar',
                 symbol: 'rect',
                 itemStyle: {

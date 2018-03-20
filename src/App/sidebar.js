@@ -12,14 +12,18 @@ class Sidebar extends Component {
             wf_judge:true
          }
     }
-    click1=()=>{
+    click1=(a)=>{
         this.refs.wf_menu.className="submenu";
             this.refs.wf.style.height="0px";
             setTimeout(() => {
                 this.refs.wf.style.display="none";
             }, 600);
-    
-        this.refs.wf_menu1.className="active";
+        
+        // this.refs.wf_menu1.className="active";
+        for(let i=0;i<this.refs.wf_me.children.length;i++){
+            this.refs.wf_me.children[i].classList.remove('active')
+        }
+        this.refs.wf_me.children[a].className="active";
         this.refs.wf_menu.className="submenu";
         this.setState({
             wf_judge:true
@@ -29,8 +33,11 @@ class Sidebar extends Component {
         let {wf_judge}=this.state;
         let timer1=null;
         //清空子标签的active
-        for(let i=0;i<2;i++){
-            this.refs.wf.children[i].className='';
+        // for(let i=0;i<2;i++){
+        //     this.refs.wf.children[i].className='';
+        // }
+        for(let i=0;i<this.refs.wf_me.children.length;i++){
+            this.refs.wf_me.children[i].classList.remove('active')
         }
         //给打开menu加transition
         this.refs.wf.style.transition=".6s";
@@ -78,8 +85,8 @@ class Sidebar extends Component {
 				<div id="search">
 					<input type="text" placeholder="Search here..."/><button type="submit" className="tip-right" title="Search"><i className="fa fa-search"></i></button>
 				</div>	
-				<ul>
-					<li ref="wf_menu1" className="active"><Link onClick={this.click1} to="/homepage"><i className="fa fa-home"></i> <span>Dashboard</span></Link></li>
+				<ul ref="wf_me">
+					<li ref="wf_menu1" className="active"><Link onClick={this.click1.bind('',0)} to="/homepage"><i className="fa fa-home"></i> <span>Dashboard</span></Link></li>
                     <li ref="wf_menu" className="submenu">
 						<a onClick={this.click} style={{cursor:"pointer"}}><i className="fa fa-list"></i> <span>WorkFlow</span> <i className="arrow fa fa-chevron-right"></i></a>
 						<ul ref="wf">
@@ -92,23 +99,23 @@ class Sidebar extends Component {
 							{/* <li><a href="buttons.html">Buttons &amp; icons</a></li> */}
 						</ul>
 					</li>
-					<li className="submenu">
-						<a style={{cursor:"pointer"}} ><i className="fa fa-th-list"></i> <span>Access PDMLink</span> <i className="arrow fa fa-chevron-right"></i></a>
+					{/* <li className="submenu">
+						<a onClick={this.click1.bind('',2)} style={{cursor:"pointer"}} ><i className="fa fa-th-list"></i> <span>Access PDMLink</span> <i className="arrow fa fa-chevron-right"></i></a>
 						<ul>
 							<li><a href="form-common.html">Common elements</a></li>
 							<li><a href="form-validation.html">Validation</a></li>
 							<li><a href="form-wizard.html">Wizard</a></li>
 						</ul>
-					</li>
+					</li> */}
 					{/* <li><a href="tables.html"><i className="fa fa-th"></i> <span>Tables</span></a></li> */}
 
 
-                    <li><Link to="/homepage/invoice"><i className="fa fa-file"></i> <span>Invoice</span></Link></li>
+                    <li><Link onClick={this.click1.bind('',2)} to="/homepage/invoice"><i className="fa fa-file"></i> <span>Invoice</span></Link></li>
 
 
-					<li><Link to="/homepage/msg"><i className="fa fa-th-list"></i> <span>Team Message</span></Link></li>
+					<li><Link onClick={this.click1.bind('',3)} to="/homepage/msg"><i className="fa fa-th-list"></i> <span>Team Message</span></Link></li>
 					<li className="submenu">
-						<a style={{cursor:"pointer"}} ><i className="fa fa-file"></i> <span>Resources</span> <i className="arrow fa fa-chevron-right"></i></a>
+						<a onClick={this.click1.bind('',4)} style={{cursor:"pointer"}} ><i className="fa fa-file"></i> <span>Resources</span> <i className="arrow fa fa-chevron-right"></i></a>
 						<ul>
 							<li><a href="invoice.html">Invoice</a></li>
 							<li><a href="chat.html">Support chat</a></li>
@@ -118,10 +125,10 @@ class Sidebar extends Component {
 						</ul>
 					</li>
 					<li>
-						<a style={{cursor:"pointer"}} ><i className="fa fa-signal"></i> <span>Community</span></a>
+						<a onClick={this.click1.bind('',5)} style={{cursor:"pointer"}} ><i className="fa fa-signal"></i> <span>Community</span></a>
 					</li>
 					<li>
-						<a style={{cursor:"pointer"}} ><i className="fa fa-inbox"></i> <span>Favorite</span></a>
+						<a onClick={this.click1.bind('',6)} style={{cursor:"pointer"}} ><i className="fa fa-inbox"></i> <span>Favorite</span></a>
 					</li>
 				</ul>
 			

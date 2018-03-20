@@ -17,6 +17,7 @@ class Calender extends Component {
 				return
 			}else{
 				ev.target.appendChild(inp);
+				inp.focus();
 				inp.onblur=()=>{
 					if(inp.value.trim()){
 						inp.previousElementSibling.innerText=inp.value;
@@ -32,6 +33,7 @@ class Calender extends Component {
 				return
 			}else{
 				ev.target.children[0].appendChild(inp);
+				inp.focus();
 				inp.onblur=()=>{
 					if(inp.value.trim()){
 						inp.previousElementSibling.innerText=inp.value;
