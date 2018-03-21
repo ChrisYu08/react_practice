@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 class Chart1 extends Component {
     constructor(props) {
         super(props);
@@ -106,5 +107,8 @@ class Chart1 extends Component {
          )
     }
 }
- 
-export default Chart1;
+
+export default connect(state=>state,(dispatch)=>{
+    return {dispatch:dispatch}
+})(Chart1);
+// export default Chart1;

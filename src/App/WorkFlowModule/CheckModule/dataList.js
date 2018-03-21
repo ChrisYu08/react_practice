@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-
+import {connect} from 'react-redux';
+import {changechecked} from './../../../Reducer_redux/index';
 class DataList extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     remove=(ev)=>{
-        let {changechecked}=this.props;
+        let {changechecked,dispatch}=this.props;
         let removeId=ev.target.parentNode.parentNode.children[2].innerText;
-        changechecked(removeId)
+        // changechecked(removeId)
+        dispatch(changechecked(removeId))
     }
     render() { 
         let {Dept,ID,formName,time,num}=this.props;
@@ -27,5 +29,8 @@ class DataList extends Component {
         )
     }
 }
- 
-export default DataList;
+
+export default connect(state=>state,(dispatch)=>{
+    return {changechecked,dispatch:dispatch}
+})(DataList)
+// export default DataList;

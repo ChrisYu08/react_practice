@@ -11,10 +11,12 @@ class Login extends Component {
         this.state = {
             val_u:'',
             val_p:'',
+            onoff11:false
             
         }
     }
     change=(ev)=>{
+        let {val_u,val_p}=this.state;
         if(ev.target.type=='text'){
             this.setState({
                 val_u:ev.target.value
@@ -24,7 +26,6 @@ class Login extends Component {
                 val_p:ev.target.value
             })
         }
-        
     }
     blur=(ev)=>{
         let {val_u,val_p}=this.state;
@@ -37,29 +38,49 @@ class Login extends Component {
     }
     click=()=>{
         let {val_u,val_p}=this.state;
-        let {information}=this.props;
+        // let {information}=this.props;
         if(!val_u.trim()){
             this.refs.nn.className+=' has-error'
-        };
-        if(!val_p.trim()){
+        }else if(!val_p.trim()){
             this.refs.nn1.className+=' has-error'
+        }else if(!val_u.trim()&&!val_p.trim()){
+            this.refs.nn.className+=' has-error';
+            this.refs.nn1.className+=' has-error';
+        }else{
+            let information=JSON.parse(localStorage.getItem('users'));
+            for(var attr in information){
+                // console.log(attr,information[attr])
+                if(val_u==attr&&val_p==information[attr]){
+                    this.setState({
+                        onoff11:true
+                    })
+                    return 
+                }else{
+                    this.setState({
+                        onoff11:false
+                    })
+                }
+            }
         }
-        // for(var attr in information){
-        //     if(val_u==attr&&val_p==information[attr]){
-        //         alert(1)
-        //     }
-        // }
     }
     judeglink=()=>{
         let {val_u,val_p}=this.state;
-        let {information}=this.props;
-        for(var attr in information){
-            if(val_u==attr&&val_p==information[attr]){
-                return true
-            }else{
-                return false
+        let {information}=JSON.parse(localStorage.getItem('users'));
+            for(var attr in information){
+                if(val_u==attr&&val_p==information[attr]){
+                    this.setState({
+                        onoff11:true
+                    })
+                    return 
+                    // return true
+                }else{
+                    this.setState({
+                        onoff11:false
+                    })
+                    return 
+                    // return false
+                }
             }
-        }
     }
     reg=()=>{
         let {registerToggle}=this.props;
@@ -74,10 +95,11 @@ class Login extends Component {
         // this.refs.reco.parentNode.style.height='183px';
         // this.refs.reco.style.opacity="1";
     }
+    
     render() {
-        let {val_p,val_u}=this.state;
-        let jud=this.judeglink();
-        let link= jud ? <Link onClick={this.click} to="/homepage">
+        let {val_p,val_u,onoff11}=this.state;
+        console.log(onoff11)
+        let link= onoff11 ? <Link onClick={this.click} to="/homepage">
                             <button onClick={this.click} className="btn btn-block btn-primary btn-default">Login</button> 
                         </Link>
                       :<button onClick={this.click} className="btn btn-block btn-primary btn-default">Login</button>;
@@ -99,7 +121,10 @@ class Login extends Component {
                                   <a style={{cursor:'pointer'}} className="flip-link to-recover grey">Lost password?</a>
                               </div>
                               <p ref="change">
-                              {link}
+                              {/* {link} */}
+                              <Link onMouseDown={this.click} to={onoff11?"/homepage":""}>
+                                <button className="btn btn-block btn-primary btn-default">Login</button> 
+                            </Link>
                               {/* <Link onClick={this.click} to="/index"> */}
                                 {/* <input onClick={this.click} type="button" className="btn btn-block btn-primary btn-default" value="Login" /> */}
                                 {/* <button onClick={this.click} className="btn btn-block btn-primary btn-default">Login</button> */}

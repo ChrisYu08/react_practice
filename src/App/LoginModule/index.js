@@ -13,16 +13,32 @@ class LoginModule extends Component {
             recoverStatus: false,
             loginStatus: true,
             information:{
-                2016020008:12345
+                // 2016020008:12345
             }
+        }
+    }
+    componentWillMount(){
+        if(localStorage.getItem('users')==null){
+            localStorage.setItem('users','{"2016020008":"12345"}');
+
+            this.setState({
+                information:{2016020008:12345}
+            })
+        }else{
+            let info=JSON.parse(localStorage.getItem('users'));
+            this.setState({
+                information:info
+            })
         }
     }
     addInfor=(name,pass)=>{
         let {information}=this.state;
         information[name]=pass;
-        this.setState({
-            information:information
-        })
+        let info1=JSON.stringify(information);
+        localStorage.setItem('users',info1);
+        // this.setState({
+        //     information:information
+        // })
     }
     registerToggle=()=>{
         this.setState({

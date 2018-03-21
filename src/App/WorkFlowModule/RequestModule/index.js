@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import "./../../../Css/jquery-ui.css";
 import "./../../../Css/icheck/flat/blue.css";
 import "./../../../Css/select2.css";
+
+import {connect} from 'react-redux';
+import {changechecked,changecheckedtrue,addData} from './../../../Reducer_redux/index';
+
 import {
     BrowserRouter as Router,
     Link,
@@ -15,7 +19,7 @@ class Request extends Component {
         this.state = {  }
 	}
 	save=()=>{
-		let {addData}=this.props;
+		let {addData,dispatch}=this.props;
 		if(!this.refs.id.value||!this.refs.name.value||!this.refs.name1.value||!this.refs.job.value){
 			if(!this.refs.id.value){
 				this.refs.id.parentNode.classList.add('has-error')
@@ -59,7 +63,8 @@ class Request extends Component {
 				this.refs.shadow.style.display='block'; 
 			}, 100);
 
-			addData(data_apply)
+			// addData(data_apply)
+			dispatch(addData(data_apply))
 		}
 		
 	}
@@ -328,5 +333,8 @@ class Request extends Component {
          )
     }
 }
- 
-export default Request;
+
+export default connect(state=>state,(dispatch)=>{
+    return {changecheckedtrue,changechecked,addData,dispatch:dispatch}
+})(Request)
+// export default Request;

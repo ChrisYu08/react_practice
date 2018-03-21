@@ -66,7 +66,7 @@ class TeamMessage extends Component {
 			</div>
 			<div id="breadcrumb">
 				<a style={{cursor:'pointer'}} title="Go to Home" className="tip-bottom"><i className="fa fa-home"></i> Home</a>
-				{/* <a href="#">Sample Pages</a> */}
+				{/* <a style={{cursor:"pointer"}}>Sample Pages</a> */}
 				<a style={{cursor:'pointer'}} className="current">Messages</a>
 			</div>				
 				<div className="row">
@@ -94,24 +94,24 @@ class TeamMessage extends Component {
 											<li className="messages-item">
 													<span className="messages-item-star" title="Mark as starred"><i className="fa fa-star"></i></span>
 													<img className="messages-item-avatar" src="img/demo/av1.jpg" />
-													<span className="messages-item-from">John Doe</span>
+													<span className="messages-item-from">Eric</span>
 													<div className="messages-item-time"><span className="text">10:23 PM</span>
 														<div className="messages-item-actions">
-															<a href="#" title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
+															<a style={{cursor:"pointer"}} title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
 															<div className="dropdown">
-																<a href="#" title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
+																<a style={{cursor:"pointer"}} title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#">Work</a></li>
-																	<li><a href="#">Partners</a></li>
-																	<li><a href="#">Family</a></li>
+																	<li><a style={{cursor:"pointer"}}>Work</a></li>
+																	<li><a style={{cursor:"pointer"}}>Partners</a></li>
+																	<li><a style={{cursor:"pointer"}}>Family</a></li>
 																</ul>
 															</div>
 															<div className="dropdown">
-																<a href="#" title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
+																<a style={{cursor:"pointer"}} title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
 																</ul>
 															</div>
 														</div>
@@ -124,24 +124,24 @@ class TeamMessage extends Component {
 												
 													<span className="messages-item-star" title="Remove star"><i className="fa fa-star"></i></span>
 													<img className="messages-item-avatar" src="img/demo/av2.jpg" />
-													<span className="messages-item-from">John Doe</span>
+													<span className="messages-item-from">Lebron James</span>
 													<div className="messages-item-time"><span className="text">08:46 PM</span>
 														<div className="messages-item-actions">
-															<a href="#" title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
+															<a style={{cursor:"pointer"}} title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
 															<div className="dropdown">
-																<a href="#" title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
+																<a style={{cursor:"pointer"}} title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#">Work</a></li>
-																	<li><a href="#">Partners</a></li>
-																	<li><a href="#">Family</a></li>
+																	<li><a style={{cursor:"pointer"}}>Work</a></li>
+																	<li><a style={{cursor:"pointer"}}>Partners</a></li>
+																	<li><a style={{cursor:"pointer"}}>Family</a></li>
 																</ul>
 															</div>
 															<div className="dropdown">
-																<a href="#" title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
+																<a style={{cursor:"pointer"}} title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
 																</ul>
 															</div>
 														</div>
@@ -155,24 +155,24 @@ class TeamMessage extends Component {
 													<span className="messages-item-star" title="Mark as starred"><i className="fa fa-star"></i></span>
 													<span className="messages-item-attachment"><i className="fa fa-paperclip"></i></span>
 													<img className="messages-item-avatar" src="img/demo/av3.jpg" />
-													<span className="messages-item-from">John Doe</span>
+													<span className="messages-item-from">Kobe Bryant</span>
 													<div className="messages-item-time"><span className="text">04:03 PM</span>
 														<div className="messages-item-actions">
-															<a href="#" title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
+															<a style={{cursor:"pointer"}} title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
 															<div className="dropdown">
-																<a href="#" title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
+																<a style={{cursor:"pointer"}} title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#">Work</a></li>
-																	<li><a href="#">Partners</a></li>
-																	<li><a href="#">Family</a></li>
+																	<li><a style={{cursor:"pointer"}}>Work</a></li>
+																	<li><a style={{cursor:"pointer"}}>Partners</a></li>
+																	<li><a style={{cursor:"pointer"}}>Family</a></li>
 																</ul>
 															</div>
 															<div className="dropdown">
-																<a href="#" title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
+																<a style={{cursor:"pointer"}} title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
 																</ul>
 															</div>
 														</div>
@@ -185,24 +185,24 @@ class TeamMessage extends Component {
 												
 													<span className="messages-item-star" title="Mark as starred"><i className="fa fa-star"></i></span>
 													<img className="messages-item-avatar" src="img/demo/av1_1.jpg" />
-													<span className="messages-item-from">John Doe</span>
+													<span className="messages-item-from">Dwyane Wade</span>
 													<div className="messages-item-time"><span className="text">11:16 AM</span>
 														<div className="messages-item-actions">
-															<a href="#" title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
+															<a style={{cursor:"pointer"}} title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
 															<div className="dropdown">
-																<a href="#" title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
+																<a style={{cursor:"pointer"}} title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#">Work</a></li>
-																	<li><a href="#">Partners</a></li>
-																	<li><a href="#">Family</a></li>
+																	<li><a style={{cursor:"pointer"}}>Work</a></li>
+																	<li><a style={{cursor:"pointer"}}>Partners</a></li>
+																	<li><a style={{cursor:"pointer"}}>Family</a></li>
 																</ul>
 															</div>
 															<div className="dropdown">
-																<a href="#" title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
+																<a style={{cursor:"pointer"}} title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
 																<ul className="dropdown-menu pull-right">
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
-																	<li><a href="#"><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
+																	<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
 																</ul>
 															</div>
 														</div>
@@ -217,10 +217,10 @@ class TeamMessage extends Component {
 												<div className="message-to">To: George Coockeny</div>
 												<div className="message-time">8 Sep 2013, 08:46 PM</div>
 												<div className="message-actions">
-													<a href="#" title="Move to trash"><i className="fa fa-trash-o"></i></a>
-													<a href="#" title="Reply"><i className="fa fa-reply"></i></a>
-													<a href="#" title="Reply to all"><i className="fa fa-reply-all"></i></a>
-													<a href="#" title="Forward"><i className="fa fa-long-arrow-right"></i></a>
+													<a style={{cursor:"pointer"}} title="Move to trash"><i className="fa fa-trash-o"></i></a>
+													<a style={{cursor:"pointer"}} title="Reply"><i className="fa fa-reply"></i></a>
+													<a style={{cursor:"pointer"}} title="Reply to all"><i className="fa fa-reply-all"></i></a>
+													<a style={{cursor:"pointer"}} title="Forward"><i className="fa fa-long-arrow-right"></i></a>
 												</div>
 											</div>
 											<div className="message-content">

@@ -8,6 +8,10 @@ import "./../../../Css/icheck/flat/blue.css";
 import "./../../../Css/select2.css";
 import "./../../../Css/jquery-ui.css";
 import "./../../../Css/unicorn.css";
+
+import {connect} from 'react-redux';
+import {changechecked,changecheckedtrue} from './../../../Reducer_redux/index';
+
 import {
     BrowserRouter as Router,
     Link,
@@ -22,21 +26,22 @@ class Check extends Component {
         this.state = {  }
 	}
 	clickAll=()=>{
-		let {checkState,changechecked}=this.props;
+		let {checkState,changechecked,dispatch}=this.props;
 		//那些tr
 		let data_list=this.refs.lis_parent.children;
 		for(let i=0;i<data_list.length;i++){
 			//判断前面的checkbox
 			if(data_list[i].children[0].children[0].checked){
 				let removeId=data_list[i].children[2].innerText;
-				changechecked(removeId);				
+				dispatch(changechecked(removeId));
+				// changechecked(removeId);				
 			}
 		}
 		this.clearAllCheckFalse()
 	}
 	//删除完后将所有的checkbox清洗为false
 	clearAllCheckFalse=()=>{
-		let {checkState,changechecked}=this.props;
+		let {checkState,changechecked,dispatch}=this.props;
 		//那些tr
 		let data_list=this.refs.lis_parent.children;
 		for(let i=0;i<data_list.length;i++){
@@ -143,21 +148,26 @@ class Check extends Component {
 	}
 
 	queryName=(ev)=>{
-		let {checkState,changechecked,changecheckedtrue}=this.props;
+		let {checkState,changechecked,changecheckedtrue,dispatch}=this.props;
 		checkState.forEach((e,i)=>{
 			let d=e.FormName;
 			if(d.includes(ev.target.value)){
-				changecheckedtrue(e.ID)
+				// changecheckedtrue(e.ID)
+				dispatch(changecheckedtrue(e.ID))
 			}else{
-				changechecked(e.ID)
+				// changechecked(e.ID)
+				dispatch(changechecked(e.ID))
 			}
 		})
 	}
 
     render() {
 		//单个删除，从父级获取changechecked再传给孙子级，这里可以用redux
+		console.log(this.props)
 		let {checkState,changechecked}=this.props;
+		// console.log(checkState)
 		checkState=checkState.filter((e)=>e.checked);
+		console.log(checkState)
 		let list = checkState.map((e,i)=>{
 			return <DataList 
 				{...{
@@ -167,9 +177,10 @@ class Check extends Component {
 					ID:e.ID,
 					formName:e.FormName,
 					time:e.time,
-					changechecked:changechecked
+					// changechecked:changechecked
 				}}
 			/>
+			
 		});
 		//页号
 		let pages=Math.ceil((list.length)/6);
@@ -182,6 +193,7 @@ class Check extends Component {
 		}
         return ( 
             <div id="content">
+			
 			<div id="content-header">
 				<h1>查询/Inquiry</h1>
 				<div className="btn-group">
@@ -834,5 +846,8 @@ class Check extends Component {
          )
     }
 }
- 
-export default Check;
+
+export default connect(state=>state,(dispatch)=>{
+    return {changecheckedtrue,changechecked,dispatch:dispatch}
+})(Check)
+// export default Check;

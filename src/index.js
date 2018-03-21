@@ -6,7 +6,7 @@ import LoginModule from './App/LoginModule/index';
 import App from './App/index';
 import {Provider,connect} from 'react-redux';
 import {createStore} from 'redux';
-import {reducer,add} from './Reducer_redux/index';
+import {reducer} from './Reducer_redux/index';
 import {
     HashRouter as Router,
     Link,
@@ -17,12 +17,12 @@ import {
 const store = createStore(reducer);
 ReactDOM.render(
     <Provider store={store}>
-    <Router>
-        <Switch>
-            <Route exact path="/" component={LoginModule} />
-            <Route path="/homepage" component={App} />   
-        </Switch>   
-    </Router>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={LoginModule} />
+                <Route path="/homepage" component={App} />   
+            </Switch>   
+        </Router>
     </Provider>,
      document.getElementById('root')
 );

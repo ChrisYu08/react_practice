@@ -145,7 +145,9 @@ class HomePage extends Component {
 
 							{this.state.cal? <Calender ref="cal" /> : null}
 							
-							{this.state.char ? <Chart checkState={checkState} ref="char"/> : null}
+							{this.state.char ? <Chart ref="char"/> : null}
+							
+							{/* {this.state.char ? <Chart checkState={checkState} ref="char"/> : null} */}
 
 							<div style={{marginTop:'60px'}} className="widget-box">
 								<div className="widget-title">
