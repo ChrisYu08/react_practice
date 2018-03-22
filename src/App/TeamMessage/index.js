@@ -2,7 +2,59 @@ import React, { Component } from 'react';
 class TeamMessage extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+			arr:[
+				{	
+					from:'John Doe',
+					'fromdoe':'john-doe',
+					to:'Eric',
+					time:'8 Sep 2013, 10:23 PM',
+					txt:'12',
+					p1:'Hi George!',
+					p2:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut blandit ligula. In accumsan mauris at augue feugiat consequat. Aenean consequat sem sed velit sagittis dignissim. Phasellus quis convallis est. Praesent porttitor mauris nec lectus mollis, eget sodales libero venenatis. Cras eget vestibulum turpis. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam turpis velit, tempor vitae libero ac, fermentum laoreet dolor.',
+					p3:'John Doe',
+					im:"img/demo/av1.jpg",
+					onoff:true
+				},
+				{	
+					from:'Kobe Bryant',
+					'fromdoe':'kobe-doe',
+					to:'Lebron James',
+					time:'8 Sep 2013, 08:46 PM',
+					txt:'12',
+					p1:'Hi George!',
+					p2:'Please remember to call and tell me your train number and time of arrival so that I can meet you at the railway station. By the way, it’s very hot here and we have a lot of sunshine, so don’t forget to wear you sunglasses.',
+					p3:'John Doe',
+					im:"img/demo/av2.jpg",
+					onoff:false
+				},
+				{	
+					from:'Lebron James',
+					'fromdoe':'lebron-doe',
+					to:'Kobe Bryant',
+					time:'8 Sep 2013, 11:16 PM',
+					txt:'12',
+					p1:'Hi George!',
+					p2:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut blandit ligula. In accumsan mauris at augue feugiat consequat. Aenean consequat sem sed velit sagittis dignissim. Phasellus quis convallis est. Praesent porttitor mauris nec lectus mollis, eget sodales libero venenatis. Cras eget vestibulum turpis. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam turpis velit, tempor vitae libero ac, fermentum laoreet dolor.',
+					p3:'John Doe',
+					im:"img/demo/av3.jpg",
+					onoff:false
+				},
+				{	
+					from:'Kobe Bryant',
+					'fromdoe':'kobe-doe',
+					to:'Dwyane Wade',
+					time:'8 Sep 2013, 04:36 PM',
+					txt:'12',
+					p1:'Hi George!',
+					p2:'Please remember to call and tell me your train number and time of arrival so that I can meet you at the railway station. By the way, it’s very hot here and we have a lot of sunshine, so don’t forget to wear you sunglasses.',
+					p3:'John Doe',
+					im:"img/demo/av1_1.jpg",
+					onoff:false
+				}
+			],
+			arr0:[]
+		 }
     }
     newClick=()=>{
         this.refs.outBox.style.display='block';
@@ -17,6 +69,48 @@ class TeamMessage extends Component {
         this.refs.outBox.classList.remove('in');
         this.refs.shadow.style.display='none'; 
 	}
+	ok=()=>{
+		let {arr,arr0}=this.state;
+		let {numFn}=this.props;
+		let arr1=arr;
+		let inpTo = this.refs.inpTo;
+		let inpSub = this.refs.inpSub;
+		let textA = this.refs.textA;
+		let date= new Date();
+		date=date+'';
+		date=date.slice(0,24);
+		if(!inpTo.value.trim()||!inpSub.value.trim()||!textA.value.trim()) return;
+		let newObj={
+			from:'Chris',
+			'fromdoe':'chris-doe',
+			to:'inpTo',
+			time: date,
+			txt:'12',
+			im:"img/demo/av2.jpg",
+			p1:'Hi '+ inpTo.value+'!',
+			p2:textA.value,
+			p3:'Chris',
+			onoff:false
+		};
+		arr1.push(newObj);
+
+
+		arr1.forEach((e,i)=>{
+			if(i>3){
+				arr0.push(e);
+				this.setState({
+					arr0:arr0
+				})
+				//给父级传数据
+				numFn(this.state.arr.length*1)
+			}
+		});
+
+		this.setState({
+			arr:arr1
+		})
+		this.cancel();
+	}
 	ClickCh=(a1)=>{
 		let chil=this.refs.ch.children;
 		for(let i=0;i<chil.length;i++){
@@ -25,7 +119,70 @@ class TeamMessage extends Component {
 		console.log(a1)
 		chil[a1].className='active';
 	}
+	changeChat=(ev)=>{
+		let {arr}=this.state;
+		let arr1=arr;
+		for(let i=0;i<this.refs.chats.children.length;i++){
+			this.refs.chats.children[i].classList.remove('active');
+			arr1[i].onoff=false;
+		}
+		if(ev.target.tagName=='SPAN'||ev.target.tagName=='IMG'){
+			ev.target.parentNode.classList.add('active');
+			for(let i=0;i<this.refs.chats.children.length;i++){
+				if(this.refs.chats.children[i]==ev.target.parentNode){
+					arr1[i].onoff=true;
+					this.setState({
+						arr:arr1
+					})
+				}
+			}
+			
+		}else if(ev.target.tagName=='LI'){
+			ev.target.classList.add('active')
+		}
+		
+	}
     render() { 
+		let {arr,arr0}=this.state;
+		let t =new Date();
+		t=t+'';
+		let arr1=arr.filter((e,i)=>{
+			return e.onoff
+		});
+		let lis=null;
+		if(arr0.length){
+			lis=arr0.map((e,i)=>{
+				return <li key={i} className="messages-item">								
+				<span className="messages-item-star" title="Mark as starred"><i className="fa fa-star"></i></span>
+				<img className="messages-item-avatar" src="img/demo/av4.jpg" />
+				<span className="messages-item-from">{e.from}</span>
+				<div className="messages-item-time"><span className="text">{t.slice(16,21)}</span>
+					<div className="messages-item-actions">
+						<a style={{cursor:"pointer"}} title="Reply" data-toggle="dropdown"><i className="fa fa-mail-reply"></i></a>
+						<div className="dropdown">
+							<a style={{cursor:"pointer"}} title="Move to folder" data-toggle="dropdown"><i className="fa fa-folder-open"></i></a>
+							<ul className="dropdown-menu pull-right">
+								<li><a style={{cursor:"pointer"}}>Work</a></li>
+								<li><a style={{cursor:"pointer"}}>Partners</a></li>
+								<li><a style={{cursor:"pointer"}}>Family</a></li>
+							</ul>
+						</div>
+						<div className="dropdown">
+							<a style={{cursor:"pointer"}} title="Attach to tag" data-toggle="dropdown"><i className="fa fa-tag"></i></a>
+							<ul className="dropdown-menu pull-right">
+								<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'green'}}></i>Friends</a></li>
+								<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'red'}}></i>Important</a></li>
+								<li><a style={{cursor:"pointer"}}><i className="tag-icon" style={{backgroundColor: 'blue'}}></i>Socials</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<span className="messages-item-subject">Astra anea en bumanso ...</span>
+				<span className="messages-item-preview">Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do antera ...</span>
+		</li>
+			})
+			
+		}
         return ( 
             <div id="content">
 			<div id="content-header">
@@ -45,20 +202,20 @@ class TeamMessage extends Component {
 					    	<div className="modal-body nopadding">
 					        	<form>
 									<div className="new-message-to">
-										To: <input type="text" name="message-to" />
+										To: <input ref="inpTo" type="text" name="message-to" />
 									</div>
 									<div className="new-message-subject">
-										Subject: <input type="text" name="message-subject" />
+										Subject: <input ref="inpSub" type="text" name="message-subject" />
 									</div>
 									<div className="new-message-content">
-										<textarea name="message-content"></textarea>
+										<textarea ref="textA" name="message-content"></textarea>
 									</div>
 					        	</form>
 					    	</div>
 					    	<div className="modal-footer">
 					        	<button onClick={this.cancel} type="button" className="btn btn-danger" data-dismiss="modal">Discard</button>
 					        	<button onClick={this.cancel} type="button" className="btn btn-success" data-dismiss="modal">Save as draft</button> &nbsp; &nbsp; 
-					        	<button onClick={this.cancel} type="button" className="btn btn-primary" data-dismiss="modal">Send</button>
+					        	<button onClick={this.ok} type="button" className="btn btn-primary" data-dismiss="modal">Send</button>
 					      	</div>
 					    </div>
 					</div>
@@ -90,8 +247,8 @@ class TeamMessage extends Component {
 							<div className="widget-content nopadding">
 								<div className="tab-content">
 									<div id="inbox-tab" className="tab-pane active checklist">
-										<ul className="messages-list">
-											<li className="messages-item">
+										<ul ref="chats" onClick={this.changeChat} className="messages-list">
+											<li className="messages-item active">
 													<span className="messages-item-star" title="Mark as starred"><i className="fa fa-star"></i></span>
 													<img className="messages-item-avatar" src="img/demo/av1.jpg" />
 													<span className="messages-item-from">Eric</span>
@@ -120,7 +277,7 @@ class TeamMessage extends Component {
 													<span className="messages-item-preview">Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do antera ...</span>
 												
 											</li>
-											<li className="messages-item active starred">
+											<li className="messages-item starred">
 												
 													<span className="messages-item-star" title="Remove star"><i className="fa fa-star"></i></span>
 													<img className="messages-item-avatar" src="img/demo/av2.jpg" />
@@ -210,12 +367,13 @@ class TeamMessage extends Component {
 													<span className="messages-item-subject">Astra anea en bumanso ...</span>
 													<span className="messages-item-preview">Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do antera ...</span>
 											</li>
+											{lis}
 										</ul>
 										<div className="messages-content">
 											<div className="message-header">
-												<div className="message-from">John Doe &lt;john-doe@domain.com&gt;</div>
-												<div className="message-to">To: George Coockeny</div>
-												<div className="message-time">8 Sep 2013, 08:46 PM</div>
+												<div className="message-from">{arr1[0].from} &lt;{arr1[0].fromdoe}@domain.com&gt;</div>
+												<div className="message-to">To: {arr1[0].to}</div>
+												<div className="message-time">{arr1[0].time}</div>
 												<div className="message-actions">
 													<a style={{cursor:"pointer"}} title="Move to trash"><i className="fa fa-trash-o"></i></a>
 													<a style={{cursor:"pointer"}} title="Reply"><i className="fa fa-reply"></i></a>
@@ -225,10 +383,11 @@ class TeamMessage extends Component {
 											</div>
 											<div className="message-content">
 												<p>
-													Hi George!
+													{/* Hi George! */}{arr1[0].p1}
 												</p>
 												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut blandit ligula. In accumsan mauris at augue feugiat consequat. Aenean consequat sem sed velit sagittis dignissim. Phasellus quis convallis est. Praesent porttitor mauris nec lectus mollis, eget sodales libero venenatis. Cras eget vestibulum turpis. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam turpis velit, tempor vitae libero ac, fermentum laoreet dolor.
+													{arr1[0].p2}
+													{/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut blandit ligula. In accumsan mauris at augue feugiat consequat. Aenean consequat sem sed velit sagittis dignissim. Phasellus quis convallis est. Praesent porttitor mauris nec lectus mollis, eget sodales libero venenatis. Cras eget vestibulum turpis. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam turpis velit, tempor vitae libero ac, fermentum laoreet dolor. */}
 												</p>
 												{/* <p>
 													Phasellus sodales metus at pulvinar facilisis. Aliquam et orci condimentum, ultrices erat in, ornare mi. Etiam vel nulla eu enim sagittis imperdiet. Donec justo arcu, iaculis eu ante ac, consequat vulputate nisl. Aenean sed consectetur tortor. Quisque tempus enim id velit ultricies, ac egestas leo vestibulum. Donec pulvinar viverra venenatis. Mauris eu dui enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus malesuada commodo odio, in hendrerit mi tincidunt nec.
@@ -238,7 +397,8 @@ class TeamMessage extends Component {
 												</p>	 */}
 												<p>
 													Regards,<br />
-													John Doe
+													{/* John Doe */}
+													{arr1[0].p3}
 												</p>
 											</div>
 										</div>

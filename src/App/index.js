@@ -84,7 +84,8 @@ class App extends Component {
                     time:'Tue Mar 06 2012 11:08:51',
                     checked:true
                 }
-            ]
+            ],
+            num:4
          }
     }
     changechecked=(id)=>{
@@ -119,12 +120,18 @@ class App extends Component {
             arr:arr1
         })
     }
+   numFn=(num1)=>{
+    this.setState({
+        num:num1
+    })
+   }
     render() { 
+        let {num}=this.state;
         return (
             <div id="body_index" data-color="grey" className="flat">
 		        <div id="wrapper">
                     <Header />
-                    <UserNav />
+                    <UserNav num={num}/>
                     <Switcher />
                     <Sidebar />
 
@@ -158,7 +165,9 @@ class App extends Component {
                         />
                         <Route 
                             path="/homepage/msg"
-                            component={TeamMessage}
+                            render={()=>{
+                                return <TeamMessage numFn={this.numFn} />
+                            }}
                         />
                         <Route exact path="/homepage" 
                             render={()=>{
