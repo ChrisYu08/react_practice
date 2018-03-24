@@ -4,6 +4,8 @@ import Calender from './Calender/index';
 import Chart from './Chart/index';
 import Chart1 from './Chart/Chart1/Chart1';
 import News from './News/index';
+import {connect} from 'react-redux';
+
 class HomePage extends Component {
     constructor(props) {
         super(props);
@@ -171,7 +173,7 @@ class HomePage extends Component {
 										</div>
 										<div className="col-xs-12 col-sm-8">
 											<div className="chart">
-											<Chart1 checkState={checkState} />
+											<Chart1  />
 											</div>
 										</div>	
 									</div>							
@@ -185,4 +187,7 @@ class HomePage extends Component {
     }
 }
  
-export default HomePage;
+// export default HomePage;
+export default connect(state=>state,(dispatch)=>{
+	return {dispatch:dispatch}
+})(HomePage);

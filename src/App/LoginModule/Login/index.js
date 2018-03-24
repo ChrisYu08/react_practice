@@ -98,7 +98,7 @@ class Login extends Component {
     
     render() {
         let {val_p,val_u,onoff11}=this.state;
-        console.log(onoff11)
+        // console.log(onoff11)
         let link= onoff11 ? <Link onClick={this.click} to="/homepage">
                             <button onClick={this.click} className="btn btn-block btn-primary btn-default">Login</button> 
                         </Link>

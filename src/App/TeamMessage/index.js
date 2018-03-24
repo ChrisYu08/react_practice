@@ -116,7 +116,6 @@ class TeamMessage extends Component {
 		for(let i=0;i<chil.length;i++){
 			chil[i].className='';
 		};
-		console.log(a1)
 		chil[a1].className='active';
 	}
 	changeChat=(ev)=>{
@@ -341,7 +340,7 @@ class TeamMessage extends Component {
 											<li className="messages-item">
 												
 													<span className="messages-item-star" title="Mark as starred"><i className="fa fa-star"></i></span>
-													<img className="messages-item-avatar" src="img/demo/av1_1.jpg" />
+													<img className="messages-item-avatar" src="img/demo/av5.jpg" />
 													<span className="messages-item-from">Dwyane Wade</span>
 													<div className="messages-item-time"><span className="text">11:16 AM</span>
 														<div className="messages-item-actions">

@@ -47,7 +47,7 @@ class UserNav extends Component {
 		let list= messa.map((e,i)=>{
 			return <li key={i} className="message-item">
 						<a style={{cursor:"pointer"}} >
-							<img style={{float:'left',borderRadius:'4px',overflow:'hidden',marginTop:'5px'}} alt="User Icon" src={e.src} />
+							<img style={{float:'left',borderRadius:'4px',overflow:'hidden',marginTop:'5px',width:'40px',height:'40px'}} alt="User Icon" src={e.src} />
 							<div className="message-content">
 								<span className="message-time">
 									{e.time}

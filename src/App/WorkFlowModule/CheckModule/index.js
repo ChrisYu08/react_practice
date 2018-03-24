@@ -163,11 +163,9 @@ class Check extends Component {
 
     render() {
 		//单个删除，从父级获取changechecked再传给孙子级，这里可以用redux
-		console.log(this.props)
 		let {checkState,changechecked}=this.props;
 		// console.log(checkState)
 		checkState=checkState.filter((e)=>e.checked);
-		console.log(checkState)
 		let list = checkState.map((e,i)=>{
 			return <DataList 
 				{...{

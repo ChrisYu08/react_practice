@@ -172,7 +172,7 @@ class App extends Component {
                         <Route exact path="/homepage" 
                             render={()=>{
                                 return <HomePage 
-                                            checkState={this.state.arr}
+                                            // checkState={this.state.arr}
                                         />
                         }} />
                         

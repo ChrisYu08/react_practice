@@ -26,7 +26,7 @@ let data={
             checked:true
         },
         {   ID:'TE25188',
-            Dept:'Facility	',
+            Dept:'Facility',
             FormName:'厂务需求申请单',
             time:'Sun Jun 21 2014 14:25:20',
             checked:true
@@ -66,8 +66,10 @@ const reducer=(state=data,action)=>{
                 if(e.ID==action.id){
                     e.checked=false;
                 }
+            });
+            arr1=arr1.filter((e,i)=>{
+                return e.checked
             })
-            console.log(arr1,action)
             return {checkState:arr1};
         case "CHANGECHECKEDTRUE":
             var arr1=JSON.parse(JSON.stringify(state)).checkState;

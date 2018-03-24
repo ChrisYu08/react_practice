@@ -21,13 +21,13 @@ class Chart1 extends Component {
         checkState.forEach((e,i)=>{
             if(e.Dept=='Engineering'){
                 num_eng++;
-            }else if(e.Dept=='Mold'){
+            }else if(e.Dept=='MOLD'){
                 num_mol++
             }else if(e.Dept=='Quality'){
                 num_qul++
             }else if(e.Dept=='EHS'){
                 num_ehs++
-            }else if(e.Dept=='Finance'){
+            }else if(e.Dept=='Facility'){
                 num_fin++
             }else if(e.Dept=='MM'){
                 num_mm++
@@ -58,7 +58,7 @@ class Chart1 extends Component {
             xAxis: {
                 type : 'category',
                 splitLine: {show:false},
-                data : ['Engineering','Mold','Quality','EHS','Finance','MM']
+                data : ['Engineering','MOLD','Quality','EHS','Facility','MM']
             },
             yAxis: {
                 type : 'value'

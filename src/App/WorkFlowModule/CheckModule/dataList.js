@@ -7,10 +7,10 @@ class DataList extends Component {
         this.state = {  }
     }
     remove=(ev)=>{
-        let {changechecked,dispatch}=this.props;
+        let {changechecked,dispatch,ID}=this.props;
         let removeId=ev.target.parentNode.parentNode.children[2].innerText;
-        // changechecked(removeId)
-        dispatch(changechecked(removeId))
+        // changechecked(removeId
+        dispatch(changechecked(ID))
     }
     render() { 
         let {Dept,ID,formName,time,num}=this.props;
